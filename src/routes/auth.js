@@ -1,6 +1,5 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
-const { user } = require(".")
 require("dotenv").config()
 const users = require("../models/user")
 
@@ -9,18 +8,18 @@ const key = process.env.JWT_KEY
 
 // Login Admin
 router.post("/login", (req, res) => {
-    const { username, password } = req.body
-    users.filter(user=> username === user.username && password === user.password).map(user=>{
+    const { username, password,type } = req.body
+    users.filter(users=> username === users.username && password === users.password).map(users=>{
         const dataUser = {
-            username: user.username,
-            Role: user.roleType
+            username: users.username,
+            type: users.type
             }
             const token = jwt.sign(dataUser, key, { expiresIn: '1h' })
 
-        return response(res, 200, `Login Berhasil! Hallo ` + user.nama , [{ dataUser,token }])
+        return response(res, 200, "Login Success!", [{ dataUser,token }])
         }
     )
-    return response(res, 401, "Username atau Password Salah!!")
+    return response(res, 401, "User does not exist!!", [])
 })
 
 // Register

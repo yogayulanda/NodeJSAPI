@@ -1,9 +1,0 @@
-{
-    "env":{
-        "JWT_KEY":"iniRahasia",
-        "MYSQL_HOST":"localhost",
-        "MYSQL_USER":"root",
-        "MYSQL_PASS":"admin",
-        "MYSQL_DB":"node""
-    }
-}

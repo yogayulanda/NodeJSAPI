@@ -1,7 +1,5 @@
 const { createPool } = require("mysql")
 
-const {createPool} = require("mysql")
-
 const pool = createPool({
     connectionLimit:process.env.MYSQL_LIMIT,
     host:process.env.MYSQL_HOST,
@@ -9,3 +7,5 @@ const pool = createPool({
     password:process.env.MYSQL_PASS,
     database:process.env.MYSQL_DB,
 })
+
+module.exports = pool
